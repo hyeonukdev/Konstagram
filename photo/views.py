@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Photo
 
-@login_required
+# @login_required  //로그인 먼저
 def photo_list(request):
     photos = Photo.objects.all()
     return render(request,'photo/list.html', {'photos':photos})
