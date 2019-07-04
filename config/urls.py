@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# from django.conf.urls.static import static
+# from django.conf import settings
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('photo.urls')),
     path('accounts/', include('accounts.urls')),
+<<<<<<< HEAD
 ]
 
+=======
+] 
+>>>>>>> 69ef4911e85b650393f13f45ae4a08e2703a6866
