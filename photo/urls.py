@@ -13,13 +13,3 @@ urlpatterns = [
     path('delete/<int:pk>/', PhotoDeleteView.as_view(), name='photo_delete'),
     path('update/<int:pk>/', PhotoUpdateView.as_view(), name='photo_update'),
 ]
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-=======
-# from django.conf.urls.static import static
-# from django.conf import settings
-
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
->>>>>>> cfda33dbb70e0c7f55a8039c576d0e370cb2bfe4
->>>>>>> 69ef4911e85b650393f13f45ae4a08e2703a6866
