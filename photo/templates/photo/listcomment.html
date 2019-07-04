@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}- List{% endblock %}
+
+{% block content %}
+    {% for post in boards %}
+        <div class="row">
+
+            <div class="col-md-2"></div>
+
+                <div class="panel panel-success" style="width:100%;">
+                    <div class="panel-heading">
+                       <p>{{post.title}}</p>
+                    </div>
+                    <div class="panel-body">
+                        <button type="button" class="btn btn-xs btn-info">{{post.author.username}}</button> 
+                        <p>{{post.text|linebreaksbr}}</p>
+                        <p class="text-right">
+                            <a href="{% url 'photo:board_detail' pk=post.id %}" class="btn btn-xs btn-success">댓글달기</a>
+                        </p>
+                    </div>
+                </div>
+                
+
+            <div class="col-md-2"></div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

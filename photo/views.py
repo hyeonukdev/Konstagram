@@ -3,7 +3,11 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Photo
+from .models import Photo, Board
+
+def board(request):
+    boards = Board.objects.all()
+    return render(request,'photo/listcomment.html', {'boards':boards})
 
 # @login_required  //로그인 먼저
 def photo_list(request):
@@ -32,3 +36,28 @@ class PhotoUpdateView(LoginRequiredMixin, UpdateView):
     model = Photo
     fields = ['photo','text']
     template_name = 'photo/update.html'
+
+
+
+class BoardUploadView(LoginRequiredMixin, CreateView):
+    model = Board
+    fields = ['title','text']
+    template_name = 'photo/uploadcomment.html'
+
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        if form.is_valid():
+            form.instance.save()
+            return redirect('/board/')
+        else:
+            return self.render_to_response({'form':form})
+
+class BoardDeleteView(LoginRequiredMixin, DeleteView):
+    model = Board
+    success_url = '/'
+    template_name = 'photo/deletecomment.html'
+
+class BoardUpdateView(LoginRequiredMixin, UpdateView):
+    model = Board
+    fields = ['title','text']
+    template_name = 'photo/updatecomment.html'
