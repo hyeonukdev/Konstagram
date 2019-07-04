@@ -14,7 +14,3 @@ urlpatterns = [
     path('update/<int:pk>/', PhotoUpdateView.as_view(), name='photo_update'),
 ]
 
-from django.conf.urls.static import static
-from django.conf import settings
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
